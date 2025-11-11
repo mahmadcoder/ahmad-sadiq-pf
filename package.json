@@ -1,0 +1,29 @@
+{
+  "name": "ahmad-portfolio",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.28.0",
+    "eslint-config-next": "^14.1.0",
+    "framer-motion": "^12.23.15",
+    "keen-slider": "^6.8.6",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.33.0"
+  }
+}
