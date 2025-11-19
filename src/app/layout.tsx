@@ -44,7 +44,7 @@ export default function RootLayout({
           content="Front‑end developer in Multan, Pakistan building fast React & Next.js apps. Passionate about performance, REST API integration, and clean UI with Tailwind CSS."
         />
         <meta name="twitter:image" content="/images/cover-site.png" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
 
       <body className={raleway.className}>
