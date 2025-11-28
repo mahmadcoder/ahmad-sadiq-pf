@@ -50,7 +50,7 @@ export default function Home() {
         <motion.div variants={containerStagger} initial="hidden" animate="show">
           <motion.h1 variants={fadeInUp} style={{ whiteSpace: 'nowrap' }}>Hi, I&#39;m Ahmad</motion.h1>
           <motion.p variants={fadeInUp}>
-            Front‑end Dev crafting performant, clean, and user‑centric apps with React and Next.js. I turn ideas into fast, scalable interfaces and love simplifying complex problems.
+            My journey as a <strong style={{color: 'white'}}>Frontend Developer</strong> has been about more than just building websites—it&apos;s about creating experiences that work <strong style={{color: 'white'}}>seamlessly</strong>. I enjoy  <strong style={{color: 'white'}}>collaborating</strong> with different teams to shape features and deliver applications that make a real difference.
           </motion.p>
 
           <motion.div variants={containerStagger}>
@@ -107,7 +107,7 @@ export default function Home() {
         <div>
           <h2>React</h2>
           <h2>Next.js</h2>
-          <h2>Dark Mode 🌚</h2>
+          <h2>Nights 🌙</h2>
         </div>
       </motion.section>
 
