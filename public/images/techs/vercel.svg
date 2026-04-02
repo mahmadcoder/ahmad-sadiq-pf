@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vercel logo">
-  <title>Vercel</title>
-  <polygon points="256,64 480,448 32,448" fill="#ffffff"/>
+<svg width="800px" height="800px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <polygon fill="#FFFFFF" points="128 0 256 221.705007 0 221.705007"></polygon>
+    </g>
 </svg>
