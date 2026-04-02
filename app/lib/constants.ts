@@ -178,3 +178,49 @@ export const DEVELOPMENT_PHASES = [
     description: "Deploying globally, optimizing load speeds, and monitoring performance so your app stays fast and reliable at any scale."
   }
 ];
+
+export const SERVICES = [
+  {
+    id: "01",
+    category: "Performance",
+    iconBg: "bg-primary-container/20",
+    iconColor: "text-primary",
+    icon: "speed",
+    title: "High-Performance Engineering",
+    description: "Building blisteringly fast web applications with server-side rendering, static site generation, and optimized Core Web Vitals.",
+    tags: ["Next.js", "React", "Server Components", "Edge Computing"]
+  },
+  {
+    id: "02",
+    category: "UI/UX",
+    iconBg: "bg-secondary-container/20",
+    iconColor: "text-secondary",
+    icon: "design_services",
+    title: "Fluid Interface Design",
+    description: "Crafting premium user experiences with deep attention to typography, spacing, and micro-interactions."
+  },
+  {
+    id: "03",
+    category: "Architecture",
+    iconBg: "bg-tertiary-container/20",
+    iconColor: "text-tertiary",
+    icon: "architecture",
+    title: "Scalable Systems",
+    description: "Designing robust frontend architectures with modular components, design systems, and clean state management."
+  },
+  {
+    id: "04",
+    category: "SEO Optimization",
+    iconBg: "bg-primary-container/20",
+    iconColor: "text-primary",
+    icon: "search_insights",
+    title: "Technical SEO & Structure",
+    description: "Implementing semantic HTML, structured data, and dynamic meta tags for maximum search engine visibility and accessibility."
+  }
+];
+
+export const SEO_STATS = [
+  { value: "100", label: "Accessibility Score", colSpan: 1 },
+  { value: "100", label: "Best Practices", colSpan: 1 },
+  { value: "100", label: "SEO Performance Score", colSpan: 2 }
+];
