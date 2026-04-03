@@ -46,10 +46,10 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className={`fixed z-50 transition-all duration-500 ease-out overflow-hidden rounded-full border top-4 inset-x-0 mx-auto w-[92vw] max-w-6xl ${
+      className={`fixed z-50 transition-all duration-500 ease-out overflow-hidden rounded-2xl md:rounded-full border top-4 inset-x-0 mx-auto w-[92vw] max-w-6xl ${
         isScrolled 
-          ? "bg-[#131313]/90 backdrop-blur-xl border-white/10 shadow-2xl py-3 px-6 md:px-8"
-          : "bg-[#131313]/40 backdrop-blur-md border-transparent py-4 md:py-5 px-6 md:px-8"
+          ? "bg-[#131313]/90 backdrop-blur-xl border-white/10 shadow-2xl py-3 px-5 md:px-8"
+          : "bg-[#131313]/40 backdrop-blur-md border-transparent py-3.5 md:py-5 px-5 md:px-8"
       }`}
     >
       <div className="flex justify-between items-center w-full gap-4">
@@ -125,11 +125,11 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       <div 
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden flex flex-col justify-center ${
-          mobileMenuOpen ? "max-h-[300px] mt-4 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+          mobileMenuOpen ? "max-h-[300px] mt-3 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="flex flex-col items-center gap-5 py-5 border-t border-white/10">
+        <nav className="flex flex-col items-center gap-4 py-4 border-t border-white/10">
           {NAV_LINKS.map((link: NavLink) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -137,7 +137,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`whitespace-nowrap transition-colors font-headline font-bold text-lg ${
+                className={`whitespace-nowrap transition-colors font-headline font-bold text-base ${
                   isActive
                     ? "text-primary"
                     : "text-gray-400 hover:text-white"
