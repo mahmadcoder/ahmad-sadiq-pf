@@ -10,6 +10,7 @@ import type { NavLink } from "@/app/lib/types";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -70,13 +71,9 @@ export default function Navbar() {
         </Link>
 
         {/* Right side: Links + CTA tightly grouped to remove massive center gaps */}
-        <div className="flex items-center gap-6 md:gap-8 overflow-hidden">
-          {/* Links Navigation - Inline, responsive with horizontally scrolling on tiny screens */}
-          <nav 
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            className="flex items-center gap-4 md:gap-6 overflow-x-auto scroll-smooth flex-nowrap hide-scrollbar"
-          >
-            <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+        <div className="hidden md:flex items-center gap-6 md:gap-8 overflow-hidden">
+          {/* Links Navigation - Desktop */}
+          <nav className="flex items-center gap-4 md:gap-6">
             {NAV_LINKS.map((link: NavLink) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -98,11 +95,59 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="shrink-0 glass-gradient text-white px-5 py-2 md:py-2.5 rounded font-label font-bold text-xs md:text-sm tracking-wide shadow-md shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap cursor-pointer"
+            className="shrink-0 glass-gradient text-white px-5 py-2.5 rounded font-label font-bold text-sm tracking-wide shadow-md shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap cursor-pointer"
           >
             Work with Me
           </button>
         </div>
+
+        {/* Mobile controls: CTA + Hamburger */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="shrink-0 glass-gradient text-white px-4 py-2 rounded font-label font-bold text-xs tracking-wide shadow-md shadow-primary-container/20 active:scale-95 transition-all whitespace-nowrap cursor-pointer"
+          >
+            Work with Me
+          </button>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white p-1 rounded-md hover:bg-white/10 transition-colors flex items-center justify-center cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-2xl">
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      <div 
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden flex flex-col justify-center ${
+          mobileMenuOpen ? "max-h-[300px] mt-4 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col items-center gap-5 py-5 border-t border-white/10">
+          {NAV_LINKS.map((link: NavLink) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`whitespace-nowrap transition-colors font-headline font-bold text-lg ${
+                  isActive
+                    ? "text-primary"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
     </header>
   );

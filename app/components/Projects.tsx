@@ -412,7 +412,7 @@ export default function Projects() {
               </p>
 
               <div className="flex flex-wrap items-center gap-2 pl-7 sm:pl-9 mb-5">
-                {project.tags.slice(0, 3).map((tag) => (
+                {project.tags.map((tag) => (
                   <span
                     key={tag}
                     className="text-[10px] font-medium text-gray-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full"
@@ -420,25 +420,6 @@ export default function Projects() {
                     {tag}
                   </span>
                 ))}
-                {project.tags.length > 3 && (
-                  <div className="relative group/badge flex items-center">
-                    <span
-                      className="text-[10px] font-bold px-2.5 py-1 rounded-full border text-[#aec6ff] border-[#aec6ff]/30 bg-[#aec6ff]/10 shadow-[0_0_10px_rgba(174,198,255,0.1)] transition-colors duration-300 cursor-default"
-                    >
-                      +{project.tags.length - 3}
-                    </span>
-                    {/* Custom Tooltip */}
-                    <div className="absolute bottom-full right-1/2 translate-x-1/2 mb-2 w-max px-2.5 py-2 bg-[#1c1b1b] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover/badge:opacity-100 group-hover/badge:visible group-hover/badge:-translate-y-0 translate-y-1 transition-all duration-300 z-[100] flex gap-1.5 focus-within:opacity-100 focus-within:visible focus:opacity-100 focus:visible">
-                      {project.tags.slice(3).map((tag) => (
-                        <span key={tag} className="text-[9px] whitespace-nowrap font-medium text-gray-300 bg-white/[0.05] border border-white/[0.08] px-2 py-0.5 rounded-md">
-                          {tag}
-                        </span>
-                      ))}
-                      {/* Tooltip Arrow */}
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#1c1b1b] border-b border-r border-white/10 rotate-45"></div>
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="flex gap-3 pl-7 sm:pl-9">

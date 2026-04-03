@@ -137,7 +137,7 @@ export default function About() {
       </header>
 
       {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px] md:auto-rows-[240px]">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)] md:auto-rows-[240px]">
         {/* Card 1: The Philosophy (8 cols wide) */}
         <div className="bento-item md:col-span-8 md:row-span-1 bg-[#1c1b1b] border border-white/5 shadow-xl p-8 md:p-10 flex flex-col justify-end group overflow-hidden relative rounded-3xl">
           <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
