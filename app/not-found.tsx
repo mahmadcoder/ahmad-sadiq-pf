@@ -33,12 +33,6 @@ export default function NotFound() {
         "-=0.4"
       )
       .fromTo(
-        ".notfound-code",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
-        "-=0.3"
-      )
-      .fromTo(
         ".notfound-actions",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
@@ -87,7 +81,7 @@ export default function NotFound() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-background pt-16"
     >
       {/* Animated grid background */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
@@ -121,81 +115,49 @@ export default function NotFound() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl mx-auto">
         {/* Badge */}
-        <div className="notfound-badge inline-flex items-center gap-2 px-4 py-1.5 bg-surface-container-high rounded-full mb-8 border border-white/5 shadow-lg">
-          <span className="w-2 h-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_var(--color-error)]" />
-          <span className="font-label text-[10px] tracking-[0.2em] uppercase text-error font-bold">
+        <div className="notfound-badge inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full mb-4 md:mb-6 border border-white/5 shadow-lg">
+          <span className="w-1.5 h-1.5 rounded-full bg-error animate-pulse shadow-[0_0_8px_var(--color-error)]" />
+          <span className="font-label text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-error font-bold">
             Page Not Found
           </span>
         </div>
 
         {/* Giant 404 */}
-        <div ref={glitchRef} className="notfound-title relative mb-4">
-          <h1 className="glitch-text font-headline text-[min(40vw,220px)] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/[0.03] select-none">
+        <div ref={glitchRef} className="notfound-title relative mb-2">
+          <h1 className="glitch-text font-headline text-[min(28vw,140px)] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/[0.03] select-none">
             404
           </h1>
           {/* Subtle line underneath */}
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-primary-container to-transparent rounded-full" />
+          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-gradient-to-r from-transparent via-primary-container to-transparent rounded-full" />
         </div>
 
         {/* Subtitle */}
-        <div className="notfound-subtitle mt-6 mb-8">
-          <h2 className="font-headline text-xl md:text-2xl font-bold text-white mb-3 tracking-tight">
+        <div className="notfound-subtitle mt-3 md:mt-4 mb-6 md:mb-8">
+          <h2 className="font-headline text-lg md:text-xl font-bold text-white mb-2 tracking-tight">
             Lost in the void
           </h2>
-          <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md mx-auto">
+          <p className="text-gray-400 text-xs md:text-sm leading-relaxed max-w-sm mx-auto">
             The page you&apos;re looking for doesn&apos;t exist or has been moved.
             Let&apos;s get you back on track.
           </p>
         </div>
 
-        {/* Code snippet card */}
-        <div className="notfound-code w-full max-w-md mb-10">
-          <div className="bg-surface-container-low border border-white/5 rounded-2xl overflow-hidden shadow-xl">
-            {/* Terminal header */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-surface-container border-b border-white/5">
-              <div className="flex gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-              </div>
-              <span className="font-label text-[10px] text-gray-500 tracking-wider uppercase ml-2">
-                terminal
-              </span>
-            </div>
-            {/* Code content */}
-            <div className="px-5 py-4 font-label text-xs md:text-sm leading-relaxed">
-              <div className="flex gap-2">
-                <span className="text-gray-500 select-none">$</span>
-                <span className="text-primary">curl</span>
-                <span className="text-gray-400">-s this-page</span>
-              </div>
-              <div className="mt-2 text-error/80">
-                {"{"} &quot;status&quot;: <span className="text-error">404</span>, &quot;message&quot;: <span className="text-[#febc2e]">&quot;Not Found&quot;</span> {"}"}
-              </div>
-              <div className="flex gap-2 mt-3">
-                <span className="text-gray-500 select-none">$</span>
-                <span className="text-gray-500 animate-pulse">▌</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Action buttons */}
-        <div className="notfound-actions flex flex-col sm:flex-row items-center gap-4 w-full max-w-sm">
+        <div className="notfound-actions flex flex-col sm:flex-row items-center gap-3 w-full max-w-xs">
           <Link
             href="/"
-            className="group flex items-center justify-center gap-2 w-full sm:w-auto glass-gradient text-white font-label text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-full shadow-lg shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all duration-300"
+            className="group flex items-center justify-center gap-2 w-full sm:w-auto glass-gradient text-white font-label text-[10px] md:text-xs font-bold uppercase tracking-widest px-6 md:px-8 py-3 md:py-3.5 rounded-full shadow-lg shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all duration-300"
           >
-            <span className="material-symbols-outlined text-base transition-transform group-hover:-translate-x-0.5">
+            <span className="material-symbols-outlined text-sm md:text-base transition-transform group-hover:-translate-x-0.5">
               arrow_back
             </span>
             Go Home
           </Link>
           <Link
             href="/#contact"
-            className="flex items-center justify-center gap-2 w-full sm:w-auto bg-surface-container-high text-white font-label text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-full border border-white/10 hover:border-primary/30 hover:bg-surface-container-highest hover:scale-105 active:scale-95 transition-all duration-300"
+            className="flex items-center justify-center gap-2 w-full sm:w-auto bg-surface-container-high text-white font-label text-[10px] md:text-xs font-bold uppercase tracking-widest px-6 md:px-8 py-3 md:py-3.5 rounded-full border border-white/10 hover:border-primary/30 hover:bg-surface-container-highest hover:scale-105 active:scale-95 transition-all duration-300"
           >
-            <span className="material-symbols-outlined text-base text-primary">
+            <span className="material-symbols-outlined text-sm md:text-base text-primary">
               mail
             </span>
             Contact Me

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     url: "https://yourwebsite.com",
   },
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
