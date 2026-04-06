@@ -72,6 +72,16 @@ export async function POST(request: Request) {
       );
     }
 
+    // Format submission date
+    const now = new Date();
+    const submittedAt = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'Asia/Karachi',
+    });
+
     // Escape for HTML templates
     const templateData = {
       safeName: escapeHtml(cleanName),
@@ -82,6 +92,7 @@ export async function POST(request: Request) {
       profileUrl: `${normalizeOrigin(request)}/#about`,
       websiteUrl: `${normalizeOrigin(request)}/`,
       replyEmail: process.env.EMAIL_USER,
+      submittedAt,
     };
 
     // 1. Save to Supabase

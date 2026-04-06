@@ -156,9 +156,16 @@ export default function Contact() {
                 <p className="font-label text-[10px] uppercase tracking-widest text-outline">Email Address</p>
                 <div className="flex items-center space-x-2 mt-1">
                   <p className="text-white font-medium">ahmadsadiq2284@gmail.com</p>
-                  <button onClick={handleCopy} className="text-outline hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1 rounded-md hover:bg-surface-container" title="Copy Email">
-                   <span className="material-symbols-outlined text-sm">{copied ? 'check' : 'content_copy'}</span>
-                  </button>
+                  <div className="relative group/copy">
+                    <button onClick={handleCopy} className="text-outline hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1.5 rounded-lg hover:bg-surface-container cursor-pointer" aria-label="Copy Email">
+                      <span className="material-symbols-outlined text-sm">{copied ? 'check' : 'content_copy'}</span>
+                    </button>
+                    {/* Tooltip */}
+                    <span className={`absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap pointer-events-none transition-all duration-200 ${copied ? 'bg-green-500/90 text-white opacity-100 scale-100' : 'bg-[#1e293b] text-slate-200 opacity-0 scale-95 group-hover/copy:opacity-100 group-hover/copy:scale-100'}`}>
+                      {copied ? 'Copied!' : 'Copy Email'}
+                      <span className={`absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent ${copied ? 'border-t-green-500/90' : 'border-t-[#1e293b]'}`}></span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
