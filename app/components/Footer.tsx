@@ -88,7 +88,7 @@ export default function Footer() {
               <span className="font-headline font-bold text-sm text-white">System Status: All Green</span>
             </div>
             <p className="font-body text-sm text-on-surface-variant max-w-xs">Based on Planet Earth. Working Globally.</p>
-            <a className="font-headline font-bold text-xl text-white hover:text-primary transition-colors mt-2" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadsadiq.dev@gmail.com" target="_blank" rel="noopener noreferrer">ahmadsadiq.dev@gmail.com</a>
+            <a className="font-headline font-bold text-xl text-white hover:text-primary transition-colors mt-2" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadsadiq2284@gmail.com" target="_blank" rel="noopener noreferrer">ahmadsadiq2284@gmail.com</a>
           </div>
         </div>
       </div>

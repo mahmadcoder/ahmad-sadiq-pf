@@ -164,7 +164,7 @@ export default function About() {
             ref={globalGlowRef}
             className="pointer-events-none absolute -top-12 -right-12 w-52 h-52 rounded-full bg-[#aec6ff]/25 blur-[70px] opacity-30 transition-opacity duration-500"
           />
-          <div className="h-1/2 w-full bg-[#0e0e0e] relative">
+          <div className="min-h-[200px] md:min-h-0 md:h-1/2 w-full bg-[#0e0e0e] relative">
             <div ref={globalMapRef} className="absolute inset-0 opacity-40 mix-blend-screen overflow-hidden scale-[1.03]">
               <img className="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-700" alt="Global network map" src={ABOUT_DATA.globalNodes.image}/>
             </div>

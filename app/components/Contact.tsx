@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BUDGET_OPTIONS, TIMELINE_OPTIONS } from "../lib/constants";
 
-function CustomSelect({ id, label, options, defaultValue }: { id: string, label: string, options: string[], defaultValue: string }) {
+function CustomSelect({ id, label, options, defaultValue, onChange }: { id: string, label: string, options: string[], defaultValue: string, onChange?: (val: string) => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -46,6 +46,7 @@ function CustomSelect({ id, label, options, defaultValue }: { id: string, label:
               onClick={() => {
                 setSelected(opt);
                 setIsOpen(false);
+                if (onChange) onChange(opt);
               }}
             >
               {opt}
@@ -59,6 +60,58 @@ function CustomSelect({ id, label, options, defaultValue }: { id: string, label:
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
+  const [budget, setBudget] = useState(BUDGET_OPTIONS[0]);
+  const [timeline, setTimeline] = useState(TIMELINE_OPTIONS[0]);
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMsg, setStatusMsg] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText("ahmadsadiq2284@gmail.com");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+      await fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event_type: 'email_copy', metadata: { location: 'contact_section' } })
+      });
+    } catch (err) {}
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !description) {
+      setStatusMsg("Please fill in all fields.");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setStatusMsg("");
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, description, budget, timeline })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatusMsg("Message sent successfully! I'll get back to you soon.");
+        setName(""); setEmail(""); setDescription("");
+      } else {
+        setStatusMsg("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setStatusMsg("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -101,7 +154,12 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-label text-[10px] uppercase tracking-widest text-outline">Email Address</p>
-                <p className="text-white font-medium">ahmadsadiq.dev@gmail.com</p>
+                <div className="flex items-center space-x-2 mt-1">
+                  <p className="text-white font-medium">ahmadsadiq2284@gmail.com</p>
+                  <button onClick={handleCopy} className="text-outline hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1 rounded-md hover:bg-surface-container" title="Copy Email">
+                   <span className="material-symbols-outlined text-sm">{copied ? 'check' : 'content_copy'}</span>
+                  </button>
+                </div>
               </div>
             </div>
             
@@ -140,25 +198,25 @@ export default function Contact() {
             {/* Subtle Glow Accent */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
             
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-10 relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                 {/* Name Field */}
                 <div className="space-y-2 pulse-border border-b border-outline-variant pb-2">
                   <label className="font-label text-[10px] uppercase tracking-widest text-outline" htmlFor="name">Your Name</label>
-                  <input className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-xl focus:ring-0" id="name" placeholder="John Doe" type="text" />
+                  <input autoComplete="off" value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-base md:text-lg focus:ring-0 text-ellipsis overflow-hidden whitespace-nowrap" id="name" placeholder="John Doe" type="text" />
                 </div>
                 
                 {/* Email Field */}
                 <div className="space-y-2 pulse-border border-b border-outline-variant pb-2">
                   <label className="font-label text-[10px] uppercase tracking-widest text-outline" htmlFor="email">Email Address</label>
-                  <input className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-xl focus:ring-0" id="email" placeholder="john@example.com" type="email" />
+                  <input autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-base md:text-lg focus:ring-0 text-ellipsis overflow-hidden whitespace-nowrap" id="email" placeholder="john@example.com" type="email" />
                 </div>
               </div>
               
               {/* Project Description */}
               <div className="space-y-2 pulse-border border-b border-outline-variant pb-2">
                 <label className="font-label text-[10px] uppercase tracking-widest text-outline" htmlFor="description">Project Description</label>
-                <textarea className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-xl resize-none focus:ring-0" id="description" placeholder="Tell me about your vision..." rows={3}></textarea>
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full bg-transparent border-none p-0 text-white placeholder:text-surface-container-highest font-headline font-bold text-xl resize-none focus:ring-0" id="description" placeholder="Tell me about your vision..." rows={3}></textarea>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -166,25 +224,30 @@ export default function Contact() {
                 <CustomSelect 
                   id="budget" 
                   label="Budget Range" 
-                  defaultValue={BUDGET_OPTIONS[0]} 
+                  defaultValue={budget} 
                   options={BUDGET_OPTIONS} 
+                  onChange={setBudget}
                 />
                 
                 {/* Timeline - Custom Select */}
                 <CustomSelect 
                   id="timeline" 
                   label="Timeline" 
-                  defaultValue={TIMELINE_OPTIONS[0]} 
+                  defaultValue={timeline} 
                   options={TIMELINE_OPTIONS} 
+                  onChange={setTimeline}
                 />
               </div>
               
-              {/* CTA */}
-              <div className="pt-6">
-                <button className="w-full md:w-auto bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed px-10 py-5 font-headline font-black text-sm uppercase tracking-[0.2em] rounded-md shadow-lg shadow-primary-container/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-4 cursor-pointer" type="submit">
-                  <span>Send Inquiry</span>
-                  <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>
+              {/* CTA & Status */}
+              <div className="pt-6 space-y-4">
+                <button disabled={isSubmitting} className="w-full md:w-auto bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed px-10 py-5 font-headline font-black text-sm uppercase tracking-[0.2em] rounded-md shadow-lg shadow-primary-container/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-4 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100" type="submit">
+                  <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
+                  {!isSubmitting && <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>}
                 </button>
+                {statusMsg && (
+                  <p className={`font-medium ${statusMsg.includes('success') ? 'text-primary' : 'text-error'}`}>{statusMsg}</p>
+                )}
               </div>
             </form>
           </div>

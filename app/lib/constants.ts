@@ -49,7 +49,7 @@ export const ABOUT_DATA = {
   cta: {
     title: "Ready to build the future?",
     subtitle: "Currently accepting new projects. Let's talk!",
-    email: "ahmadsadiq.dev@gmail.com",
+    email: "ahmadsadiq2284@gmail.com",
     buttonText: "Start Project"
   }
 };
@@ -108,7 +108,7 @@ export const CONTACT_INFO = [
   {
     icon: "mail",
     label: "Email Address",
-    value: "ahmadsadiq.dev@gmail.com",
+    value: "ahmadsadiq2284@gmail.com",
     type: "text",
   },
   {
