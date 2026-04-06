@@ -65,8 +65,9 @@ export async function POST(request: Request) {
     const siteOrigin = normalizeOrigin(request);
     const profileUrl = `${siteOrigin}/#about`;
     const websiteUrl = `${siteOrigin}/`;
+    const brandLabel = 'Ahmad Sadiq';
     const roundedLogo = `
-      <div style="position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1f2937,#111827);display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:16px;letter-spacing:0.04em;">
+      <div style="position:absolute;top:20px;right:20px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#111827,#374151);display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:15px;letter-spacing:0.08em;box-shadow:0 8px 18px rgba(17,24,39,.25);">
         AS
       </div>
     `;
@@ -105,41 +106,45 @@ export async function POST(request: Request) {
       to: cleanEmail,
       subject: "Thank you for reaching out! Let's build something together.",
       html: `
-        <div style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 28px 14px; color: #111827; background-color: #f3f4f6;">
-          <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; position: relative;">
+        <div style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:#eef1f5; padding:30px 12px; color:#111827;">
+          <div style="max-width:640px; margin:0 auto; background:#ffffff; border:1px solid #dde3ea; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(15,23,42,.08); position:relative;">
             ${roundedLogo}
-
-            <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;">Project Inquiry Confirmation</p>
-            <h1 style="margin: 0; font-size: 26px; font-weight: 800; color: #111827; letter-spacing: -0.02em;">Hello ${safeName},</h1>
-            <p style="font-size: 15px; line-height: 1.75; color: #374151; margin: 18px 0 0 0;">
-              Thank you for your message. Your inquiry has been received successfully and is now in my review queue.
-            </p>
-
-            <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin: 22px 0;">
-              <p style="margin: 0 0 10px 0; font-size: 13px; color: #6b7280; font-weight: 600;">Submission Summary</p>
-              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size: 14px; color: #111827;">
-                <tr>
-                  <td style="padding: 6px 0; color: #6b7280;">Budget</td>
-                  <td style="padding: 6px 0; text-align: right; font-weight: 600;">${safeBudget}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 6px 0; color: #6b7280;">Timeline</td>
-                  <td style="padding: 6px 0; text-align: right; font-weight: 600;">${safeTimeline}</td>
-                </tr>
-              </table>
+            <div style="background:linear-gradient(120deg,#0f172a,#1f2937); padding:28px 28px 32px 28px;">
+              <p style="margin:0; color:#cbd5e1; font-size:12px; letter-spacing:.09em; text-transform:uppercase;">Inquiry Received</p>
+              <h1 style="margin:12px 0 0 0; color:#ffffff; font-size:28px; line-height:1.3; letter-spacing:-.02em;">Thanks ${safeName}, your request is confirmed.</h1>
+              <p style="margin:14px 0 0 0; color:#e2e8f0; font-size:14px; line-height:1.7;">I appreciate your interest in working together. I have your project details and will follow up shortly with the next steps.</p>
             </div>
 
-            <p style="font-size: 15px; line-height: 1.75; color: #374151; margin: 0;">
-              I usually respond within 24 hours with suggested next steps and delivery approach.
-            </p>
+            <div style="padding:26px 28px 18px 28px;">
+              <div style="background-color:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:16px 16px;">
+                <p style="margin:0 0 10px 0; font-size:12px; color:#64748b; font-weight:700; letter-spacing:.05em; text-transform:uppercase;">Submission Summary</p>
+                <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size:14px; color:#0f172a;">
+                  <tr>
+                    <td style="padding:7px 0; color:#64748b;">Client Name</td>
+                    <td style="padding:7px 0; text-align:right; font-weight:600;">${safeName}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0; color:#64748b;">Budget</td>
+                    <td style="padding:7px 0; text-align:right; font-weight:600;">${safeBudget}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:7px 0; color:#64748b;">Timeline</td>
+                    <td style="padding:7px 0; text-align:right; font-weight:600;">${safeTimeline}</td>
+                  </tr>
+                </table>
+              </div>
 
-            <div style="margin-top: 24px;">
-              <a href="${profileUrl}" style="display: inline-block; padding: 12px 18px; background-color: #111827; color: #ffffff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600;">View Portfolio</a>
-              <a href="mailto:${process.env.EMAIL_USER}" style="display: inline-block; margin-left: 10px; padding: 12px 18px; border: 1px solid #d1d5db; color: #111827; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600;">Reply by Email</a>
+              <p style="font-size:14px; line-height:1.8; color:#334155; margin:18px 0 0 0;">Response time: usually within 24 hours.</p>
             </div>
 
-            <div style="border-top: 1px solid #e5e7eb; margin-top: 24px; padding-top: 16px; color: #6b7280; font-size: 12px;">
-              Sent from <a href="${websiteUrl}" style="color: #374151; text-decoration: underline;">${websiteUrl}</a>
+            <div style="padding:0 28px 28px 28px;">
+              <a href="${profileUrl}" style="display:inline-block; padding:12px 20px; background-color:#111827; color:#ffffff; text-decoration:none; border-radius:10px; font-size:14px; font-weight:600;">View Portfolio</a>
+              <a href="mailto:${process.env.EMAIL_USER}" style="display:inline-block; margin-left:8px; padding:12px 20px; border:1px solid #cbd5e1; color:#0f172a; text-decoration:none; border-radius:10px; font-size:14px; font-weight:600;">Reply by Email</a>
+            </div>
+
+            <div style="border-top:1px solid #e2e8f0; padding:16px 28px 20px 28px; color:#64748b; font-size:12px;">
+              <strong style="color:#334155;">${brandLabel}</strong> · Full-Stack Web Developer<br />
+              <a href="${websiteUrl}" style="color:#334155; text-decoration:underline;">Visit Website</a>
             </div>
           </div>
         </div>
@@ -152,34 +157,42 @@ export async function POST(request: Request) {
       to: process.env.EMAIL_USER, // Send to yourself
       subject: `New Project Lead: ${cleanName}`,
       html: `
-        <div style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 680px; margin: 0 auto; padding: 16px; background: #f3f4f6;">
-          <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; position: relative;">
+        <div style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:#eef1f5; padding:24px 10px;">
+          <div style="max-width:680px; margin:0 auto; background:#ffffff; border:1px solid #dde3ea; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(15,23,42,.08); position:relative;">
             ${roundedLogo}
-            <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;">New Lead Notification</p>
-            <h2 style="margin: 0 0 16px 0; color: #111827;">New project inquiry received</h2>
+            <div style="background:linear-gradient(120deg,#0f172a,#1f2937); padding:24px 24px 26px 24px;">
+              <p style="margin:0; color:#cbd5e1; font-size:12px; letter-spacing:.09em; text-transform:uppercase;">New Lead Alert</p>
+              <h2 style="margin:10px 0 0 0; color:#ffffff; font-size:24px; letter-spacing:-.02em;">New project inquiry from ${safeName}</h2>
+            </div>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; font-size: 14px;">
-              <tr>
-                <td style="padding: 8px 0; color: #6b7280; width: 140px;">Name</td>
-                <td style="padding: 8px 0; color: #111827; font-weight: 600;">${safeName}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Email</td>
-                <td style="padding: 8px 0; color: #111827; font-weight: 600;"><a href="mailto:${cleanEmail}" style="color:#111827;text-decoration:underline;">${safeEmail}</a></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Budget</td>
-                <td style="padding: 8px 0; color: #111827; font-weight: 600;">${safeBudget}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Timeline</td>
-                <td style="padding: 8px 0; color: #111827; font-weight: 600;">${safeTimeline}</td>
-              </tr>
-            </table>
+            <div style="padding:24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse; font-size:14px;">
+                <tr>
+                  <td style="padding:9px 0; color:#64748b; width:150px;">Name</td>
+                  <td style="padding:9px 0; color:#0f172a; font-weight:600;">${safeName}</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0; color:#64748b;">Email</td>
+                  <td style="padding:9px 0; color:#0f172a; font-weight:600;"><a href="mailto:${cleanEmail}" style="color:#0f172a; text-decoration:underline;">${safeEmail}</a></td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0; color:#64748b;">Budget</td>
+                  <td style="padding:9px 0; color:#0f172a; font-weight:600;">${safeBudget}</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0; color:#64748b;">Timeline</td>
+                  <td style="padding:9px 0; color:#0f172a; font-weight:600;">${safeTimeline}</td>
+                </tr>
+              </table>
 
-            <div style="margin-top: 18px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px;">
-              <p style="margin: 0 0 8px 0; font-size: 13px; color: #6b7280; font-weight: 600;">Project Description</p>
-              <p style="margin: 0; white-space: pre-wrap; color: #111827; line-height: 1.7;">${safeDescription}</p>
+              <div style="margin-top:16px; padding:16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
+                <p style="margin:0 0 8px 0; font-size:12px; color:#64748b; font-weight:700; letter-spacing:.05em; text-transform:uppercase;">Project Description</p>
+                <p style="margin:0; white-space:pre-wrap; color:#0f172a; line-height:1.75;">${safeDescription}</p>
+              </div>
+
+              <div style="margin-top:16px;">
+                <a href="mailto:${cleanEmail}" style="display:inline-block; padding:10px 14px; background:#111827; color:#ffffff; text-decoration:none; border-radius:9px; font-size:13px; font-weight:600;">Reply to Lead</a>
+              </div>
             </div>
           </div>
         </div>
