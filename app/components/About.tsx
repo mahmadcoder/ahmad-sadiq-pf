@@ -94,6 +94,13 @@ export default function About() {
       copyTimeoutRef.current = setTimeout(() => {
         setIsCopied(false);
       }, 1800);
+
+      // Track the email copy event in analytics
+      await fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event_type: 'email_copy', metadata: { location: 'about_cta_section' } })
+      });
     } catch {
       setIsCopied(false);
     }
@@ -207,16 +214,16 @@ export default function About() {
         </div>
 
         {/* Card 5: CTA (12 cols wide) */}
-        <div className="bento-item md:col-span-12 md:row-span-1 bg-gradient-to-br from-[#0070f3] to-[#2d487d] p-6 md:p-1 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 md:px-12 overflow-hidden relative shadow-2xl rounded-3xl group">
+        <div className="bento-item md:col-span-12 md:row-span-1 bg-gradient-to-br from-[#0070f3] to-[#2d487d] p-6 md:py-8 md:px-12 flex flex-col items-center justify-center text-center gap-5 overflow-hidden relative shadow-2xl rounded-3xl group">
           <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
             <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 mixture-blend-overlay" alt="abstract mesh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8e37VrcYkPjPyJ5k6RbNdWXSF8-1Ov92-ktxVmDX7gmgNjHuS9giJqGJk9zpoKM4CWTEdRwHxLEnpTw-yl4QB6J5UtVqmzAcYi3O0r9_CytNoNk8Q6ssHkZRlL4m821weeLQQWPkjAqhtFoiJElb_hcJUir_HGnw0OmBqgJU3zDwilEtRM00V57q1mjKOan0_spLbJZnOy2DvBIN-VvnrP6_D2PPoux3wWtck-Clng8eb8syOpiOb0A9moKD3JwRsy7FuifkEfQA"/>
           </div>
-          <div className="relative z-10 text-center md:text-left pt-4 pb-2 md:py-8 px-0 md:px-0 w-full md:w-auto">
+          <div className="relative z-10">
             <h2 className="font-headline text-2xl md:text-3xl font-black text-white tracking-tight mb-1.5">{ABOUT_DATA.cta.title}</h2>
             <p className="text-white/80 font-medium text-sm md:text-base">{ABOUT_DATA.cta.subtitle}</p>
           </div>
-          <div className="relative z-10 flex flex-col items-center gap-3 md:gap-4 pb-4 md:py-8 px-0 md:px-0 w-full md:w-auto">
-            <div className="bg-[#131313]/20 backdrop-blur-md border border-white/10 px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center justify-between sm:justify-center gap-3 w-full md:w-auto">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto">
+            <div className="bg-[#131313]/20 backdrop-blur-md border border-white/10 px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center justify-center gap-3 w-full sm:w-auto">
               <span className="font-label text-xs md:text-sm text-white lowercase truncate">{ABOUT_DATA.cta.email}</span>
               <div className="relative group/copy">
                 <button
@@ -240,7 +247,7 @@ export default function About() {
             </div>
             <button
               onClick={handleNavigateToContact}
-              className="bg-white text-[#0070f3] font-label text-xs font-bold uppercase tracking-widest px-8 py-3 md:py-3.5 rounded-full shadow-lg hover:shadow-[0_0_26px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 w-full md:w-auto cursor-pointer"
+              className="bg-white text-[#0070f3] font-label text-xs font-bold uppercase tracking-widest px-8 py-3 md:py-3.5 rounded-full shadow-lg hover:shadow-[0_0_26px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto cursor-pointer"
             >
               {ABOUT_DATA.cta.buttonText}
             </button>
