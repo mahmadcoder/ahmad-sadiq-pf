@@ -72,7 +72,7 @@ export default function Contact() {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText("ahmadsadiq2284@gmail.com");
+      await navigator.clipboard.writeText("ahmadsadiq.dev@gmail.com");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
       await fetch('/api/track', {
@@ -155,7 +155,7 @@ export default function Contact() {
               <div>
                 <p className="font-label text-[10px] uppercase tracking-widest text-outline">Email Address</p>
                 <div className="flex items-center space-x-2 mt-1">
-                  <p className="text-white font-medium">ahmadsadiq2284@gmail.com</p>
+                  <p className="text-white font-medium">ahmadsadiq.dev@gmail.com</p>
                   <div className="relative group/copy">
                     <button onClick={handleCopy} className="text-outline hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1.5 rounded-lg hover:bg-surface-container cursor-pointer" aria-label="Copy Email">
                       <span className="material-symbols-outlined text-sm">{copied ? 'check' : 'content_copy'}</span>

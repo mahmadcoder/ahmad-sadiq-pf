@@ -40,40 +40,43 @@ export default function Footer() {
           
           <div className="flex gap-4 mt-4">
             {/* LinkedIn */}
-            <a aria-label="LinkedIn" className="group relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-[#0A66C2] md:bg-surface-container-high md:hover:bg-[#0A66C2] hover:-translate-y-1 transition-all duration-300 shadow-sm" href="https://www.linkedin.com/in/devahmad-sadiq/" target="_blank" rel="noopener noreferrer">
+            <a aria-label="LinkedIn" className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[#0A66C2] md:bg-surface-container-high md:hover:bg-[#0A66C2] hover:-translate-y-1 transition-all duration-300 shadow-sm" href="https://www.linkedin.com/in/devahmad-sadiq/" target="_blank" rel="noopener noreferrer">
               <img 
                 src="/images/linkedin.svg?v=final5" 
                 alt="LinkedIn" 
                 className="w-5 h-5 relative z-10 filter brightness-0 invert transition-transform duration-300 group-hover:scale-110 pointer-events-none" 
               />
-              <span className="hidden md:block absolute -top-10 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md pointer-events-none shadow-xl z-50">
+              <span className="hidden md:block absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-[#1e293b] text-slate-200 text-[11px] font-medium whitespace-nowrap px-2.5 py-1 rounded-md pointer-events-none shadow-xl z-50">
                 LinkedIn
+                <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1e293b]"></span>
               </span>
             </a>
             
             {/* GitHub */}
-            <a aria-label="GitHub" className="group relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-white md:bg-surface-container-high md:hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-sm" href="https://github.com/mahmadcoder" target="_blank" rel="noopener noreferrer">
+            <a aria-label="GitHub" className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-white md:bg-surface-container-high md:hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-sm" href="https://github.com/mahmadcoder" target="_blank" rel="noopener noreferrer">
               {/* filter-none shows the black cat natively. md:brightness-0 md:invert forces it white on desktop default */}
               <img 
                 src="/images/github.svg?v=final5" 
                 alt="GitHub" 
                 className="w-5 h-5 relative z-10 filter-none md:filter md:brightness-0 md:invert md:group-hover:filter-none transition-all duration-300 pointer-events-none group-hover:scale-110" 
               />
-              <span className="hidden md:block absolute -top-10 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md pointer-events-none shadow-xl z-50">
+              <span className="hidden md:block absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-[#1e293b] text-slate-200 text-[11px] font-medium whitespace-nowrap px-2.5 py-1 rounded-md pointer-events-none shadow-xl z-50">
                 GitHub
+                <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1e293b]"></span>
               </span>
             </a>
             
             {/* Instagram */}
-            <a aria-label="Instagram" className="group relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-transparent md:bg-surface-container-high md:hover:bg-transparent hover:-translate-y-1 transition-all duration-300 shadow-sm" href="#">
+            <a aria-label="Instagram" className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-transparent md:bg-surface-container-high md:hover:bg-transparent hover:-translate-y-1 transition-all duration-300 shadow-sm" href="#">
               {/* Shows the SVG's native "real colors" on mobile and hover. On desktop default, it's elegantly desaturated */}
               <img 
                 src="/images/instagram.svg?v=final5" 
                 alt="Instagram" 
                 className="w-6 h-6 object-contain relative z-10 filter-none opacity-100 md:filter md:grayscale md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:scale-110" 
               />
-              <span className="hidden md:block absolute -top-10 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-md pointer-events-none shadow-xl z-50">
+              <span className="hidden md:block absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-[#1e293b] text-slate-200 text-[11px] font-medium whitespace-nowrap px-2.5 py-1 rounded-md pointer-events-none shadow-xl z-50">
                 Instagram
+                <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1e293b]"></span>
               </span>
             </a>
           </div>
@@ -88,7 +91,7 @@ export default function Footer() {
               <span className="font-headline font-bold text-sm text-white">System Status: All Green</span>
             </div>
             <p className="font-body text-sm text-on-surface-variant max-w-xs">Based on Planet Earth. Working Globally.</p>
-            <a className="font-headline font-bold text-xl text-white hover:text-primary transition-colors mt-2" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadsadiq2284@gmail.com" target="_blank" rel="noopener noreferrer">ahmadsadiq2284@gmail.com</a>
+            <a className="font-headline font-bold text-xl text-white hover:text-primary transition-colors mt-2" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadsadiq.dev@gmail.com" target="_blank" rel="noopener noreferrer">ahmadsadiq.dev@gmail.com</a>
           </div>
         </div>
       </div>
