@@ -82,7 +82,24 @@ export const PROJECTS = [
     liveUrl: "https://converso-ai-app.vercel.app/",
     githubUrl: "https://github.com/mahmadcoder/lms-saas-app",
   },
-
+  {
+    id: 4,
+    title: "Loop",
+    description: "A next-generation waitlist and professional profile showcase platform for creators, founders, and developers to showcase active builds and secure custom handles.",
+    image: "/projects/loop-web.PNG",
+    tags: ["Next.js", "TypeScript", "TailwindCSS", "GSAP", "Supabase", "Waitlist"],
+    liveUrl: "https://hoo-connect-eight.vercel.app/",
+    githubUrl: "https://github.com/mahmadcoder/hoo-connect",
+  },
+  {
+    id: 5,
+    title: "Roster",
+    description: "A curated affiliate marketplace featuring creator-led storefronts, enabling followers to discover products and checkout directly from trusted brands.",
+    image: "/projects/roaster-web.PNG",
+    tags: ["Next.js", "TypeScript", "TailwindCSS", "GSAP", "Marketplace", "Affiliate"],
+    liveUrl: "https://roster-app-sand.vercel.app/",
+    githubUrl: "https://github.com/mahmadcoder/roster-app",
+  },
 ];
 
 export const HERO_STATS = [
