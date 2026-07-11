@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useLenis } from "lenis/react";
 import { NAV_LINKS } from "@/app/lib/constants";
 import type { NavLink } from "@/app/lib/types";
 
@@ -12,6 +13,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const lenis = useLenis();
 
   useGSAP(() => {
     // Entrance animation
@@ -54,7 +56,19 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center w-full gap-4">
         {/* Logo / Name - Always visible */}
-        <Link href="/" className="flex items-center gap-3 group whitespace-nowrap shrink-0">
+        <Link 
+          href="/" 
+          onClick={(e) => {
+            e.preventDefault();
+            if (lenis) {
+              lenis.scrollTo(0, { duration: 1.2 });
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+            window.history.pushState(null, "", "/");
+          }} 
+          className="flex items-center gap-3 group whitespace-nowrap shrink-0"
+        >
           <div className="w-10 h-10 rounded-xl bg-primary-container/20 group-hover:bg-primary-container border border-primary-container/30 flex items-center justify-center transition-colors shrink-0">
             <span className="material-symbols-outlined text-primary group-hover:text-white transition-colors">
               change_history

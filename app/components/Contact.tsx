@@ -152,18 +152,18 @@ export default function Contact() {
               <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-on-primary shrink-0">
                 <span className="material-symbols-outlined">mail</span>
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-label text-[10px] uppercase tracking-widest text-outline">Email Address</p>
                 <div className="flex items-center space-x-2 mt-1">
-                  <p className="text-white font-medium">ahmadsadiq.dev@gmail.com</p>
-                  <div className="relative group/copy">
+                  <p className="text-white font-medium truncate text-sm sm:text-base">ahmadsadiq.dev@gmail.com</p>
+                  <div className="relative group/copy shrink-0">
                     <button onClick={handleCopy} className="text-outline hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1.5 rounded-lg hover:bg-surface-container cursor-pointer" aria-label="Copy Email">
                       <span className="material-symbols-outlined text-sm">{copied ? 'check' : 'content_copy'}</span>
                     </button>
                     {/* Tooltip */}
-                    <span className={`absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap pointer-events-none transition-all duration-200 ${copied ? 'bg-green-500/90 text-white opacity-100 scale-100' : 'bg-[#1e293b] text-slate-200 opacity-0 scale-95 group-hover/copy:opacity-100 group-hover/copy:scale-100'}`}>
+                    <span className={`absolute -top-9 right-0 md:right-auto md:left-1/2 md:-translate-x-1/2 px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap pointer-events-none transition-all duration-200 ${copied ? 'bg-green-500/90 text-white opacity-100 scale-100' : 'bg-[#1e293b] text-slate-200 opacity-0 scale-95 group-hover/copy:opacity-100 group-hover/copy:scale-100'}`}>
                       {copied ? 'Copied!' : 'Copy Email'}
-                      <span className={`absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent ${copied ? 'border-t-green-500/90' : 'border-t-[#1e293b]'}`}></span>
+                      <span className={`absolute top-full right-3 md:right-auto md:left-1/2 md:-translate-x-1/2 border-4 border-transparent ${copied ? 'border-t-green-500/90' : 'border-t-[#1e293b]'}`}></span>
                     </span>
                   </div>
                 </div>
