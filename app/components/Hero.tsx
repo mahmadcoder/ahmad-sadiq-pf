@@ -38,7 +38,7 @@ export default function Hero() {
         </h1>
         
         <p className="hero-desc text-base sm:text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10 md:mb-12 font-body leading-relaxed">
-          Hi! I'm Ahmad Sadiq, a Next.js Developer based in Pakistan.
+          Hi! I&apos;m Ahmad Sadiq, a Next.js Developer based in Pakistan.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-2">

@@ -67,12 +67,14 @@ export default function Footer() {
             </a>
             
             {/* Instagram */}
-            <a aria-label="Instagram" className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-transparent md:bg-surface-container-high md:hover:bg-transparent hover:-translate-y-1 transition-all duration-300 shadow-sm" href="#">
-              {/* Shows the SVG's native "real colors" on mobile and hover. On desktop default, it's elegantly desaturated */}
+            <a aria-label="Instagram" className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-surface-container-high hover:-translate-y-1 transition-all duration-300 shadow-sm" href="#" target="_blank" rel="noopener noreferrer">
+              {/* Mobile gradient background / Desktop hover gradient background */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#fa8f21] via-[#d82d7e] to-[#8c3aaa] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+              
               <img 
-                src="/images/instagram.svg?v=final5" 
+                src="/images/instagram-glyph.svg?v=final5" 
                 alt="Instagram" 
-                className="w-6 h-6 object-contain relative z-10 filter-none opacity-100 md:filter md:grayscale md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:scale-110" 
+                className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:scale-110 pointer-events-none" 
               />
               <span className="hidden md:block absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-[#1e293b] text-slate-200 text-[11px] font-medium whitespace-nowrap px-2.5 py-1 rounded-md pointer-events-none shadow-xl z-50">
                 Instagram

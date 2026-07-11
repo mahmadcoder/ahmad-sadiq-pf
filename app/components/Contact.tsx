@@ -139,17 +139,17 @@ export default function Contact() {
           <div className="space-y-6">
             <span className="font-label text-primary-fixed-dim tracking-[0.2em] uppercase text-xs font-bold">Inquiry</span>
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter leading-none text-white">
-              Let's build something together
+              Let&apos;s build something together
             </h1>
             <p className="text-on-surface-variant text-lg max-w-md leading-relaxed">
-             Currently accepting new projects. Let's build something together.
+             Currently accepting new projects. Let&apos;s build something together.
             </p>
           </div>
           
           {/* Direct Contact Info */}
           <div className="space-y-8 pt-8">
             <div className="group flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-on-primary">
+              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-on-primary shrink-0">
                 <span className="material-symbols-outlined">mail</span>
               </div>
               <div>
@@ -171,7 +171,7 @@ export default function Contact() {
             </div>
             
             <div className="group flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-on-primary">
+              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-on-primary shrink-0">
                 <span className="material-symbols-outlined">share</span>
               </div>
               <div>
@@ -190,9 +190,9 @@ export default function Contact() {
             <div className="p-6 bg-surface-container-lowest rounded-xl border-l-4 border-primary/30">
               <pre className="font-label text-[11px] text-primary/60 leading-tight">
                 <span className="text-tertiary">const</span> <span className="text-white">project</span> = {"{"}
-                {"\n"}  status: <span className="text-primary-fixed">'Available'</span>,
-                {"\n"}  stack: [<span className="text-primary-fixed">'Next.js'</span>, <span className="text-primary-fixed">'Tailwind'</span>, <span className="text-primary-fixed">'AWS'</span>],
-                {"\n"}  location: <span className="text-primary-fixed">'Remote'</span>
+                {"\n"}  status: <span className="text-primary-fixed">{`'Available'`}</span>,
+                {"\n"}  stack: [<span className="text-primary-fixed">{`'Next.js'`}</span>, <span className="text-primary-fixed">{`'Tailwind'`}</span>, <span className="text-primary-fixed">{`'AWS'`}</span>],
+                {"\n"}  location: <span className="text-primary-fixed">{`'Remote'`}</span>
                 {"\n"}{"}"};
               </pre>
             </div>
