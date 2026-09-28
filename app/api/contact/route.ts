@@ -14,18 +14,27 @@ function escapeHtml(value: string): string {
     .replace(/'/g, '&#039;');
 }
 
-function normalizeOrigin(request: Request): string {
-  const fallback = process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL;
-  const requestOrigin = new URL(request.url).origin;
+const PRODUCTION_SITE_URL = 'https://www.ahmadsadiqdev.com';
 
-  if (fallback) {
-    return fallback.startsWith('http://') || fallback.startsWith('https://')
-      ? fallback
-      : `https://${fallback}`;
+function normalizeOrigin(request: Request): string {
+  // If explicitly defined via environment variable
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    const customUrl = process.env.NEXT_PUBLIC_SITE_URL.trim();
+    return customUrl.startsWith('http://') || customUrl.startsWith('https://')
+      ? customUrl
+      : `https://${customUrl}`;
   }
 
-  return requestOrigin;
+  const requestOrigin = new URL(request.url).origin;
+  // Preserve localhost in development
+  if (requestOrigin.includes('localhost') || requestOrigin.includes('127.0.0.1')) {
+    return requestOrigin;
+  }
+
+  // Always use the official production custom domain
+  return PRODUCTION_SITE_URL;
 }
+
 
 // ── POST Handler ─────────────────────────────────────────────────────────────
 
@@ -83,14 +92,15 @@ export async function POST(request: Request) {
     });
 
     // Escape for HTML templates
+    const siteOrigin = normalizeOrigin(request);
     const templateData = {
       safeName: escapeHtml(cleanName),
       safeEmail: escapeHtml(cleanEmail),
       safeDescription: escapeHtml(cleanDescription),
       safeBudget: escapeHtml(cleanBudget),
       safeTimeline: escapeHtml(cleanTimeline),
-      profileUrl: `${normalizeOrigin(request)}/#about`,
-      websiteUrl: `${normalizeOrigin(request)}/`,
+      profileUrl: `${siteOrigin}/`,
+      websiteUrl: `${siteOrigin}/`,
       replyEmail: process.env.EMAIL_USER,
       submittedAt,
     };

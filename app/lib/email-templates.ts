@@ -116,7 +116,7 @@ function summaryCard(title: string, rows: string): string {
   `;
 }
 
-function footerSection(): string {
+function footerSection(websiteUrl = 'https://www.ahmadsadiqdev.com'): string {
   return `
     <tr><td style="padding: 0 32px;"><div style="height:1px; background:${BRAND.border}; margin:0;"></div></td></tr>
     <tr>
@@ -124,10 +124,12 @@ function footerSection(): string {
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
           <tr>
             <td style="vertical-align: middle;">
-              ${logoMark()}
+              <a href="${websiteUrl}" target="_blank" style="text-decoration:none;">${logoMark()}</a>
             </td>
             <td style="vertical-align: middle; text-align: right; font-family: ${FONT};">
-              <p style="margin:0; font-size:13px; font-weight:600; color:${BRAND.dark};">${BRAND.name}</p>
+              <p style="margin:0; font-size:13px; font-weight:600; color:${BRAND.dark};">
+                <a href="${websiteUrl}" target="_blank" style="color:${BRAND.dark}; text-decoration:none;">${BRAND.name}</a>
+              </p>
               <p style="margin:2px 0 0 0; font-size:12px; color:${BRAND.muted};">${BRAND.title}</p>
             </td>
           </tr>
@@ -140,7 +142,8 @@ function footerSection(): string {
 // ── Client Confirmation Email ────────────────────────────────────────────────
 
 export function clientConfirmationTemplate(data: TemplateData): string {
-  const { safeName, safeDescription, safeBudget, safeTimeline, profileUrl, replyEmail, submittedAt } = data;
+  const { safeName, safeDescription, safeBudget, safeTimeline, profileUrl, websiteUrl, replyEmail, submittedAt } = data;
+  const targetPortfolioUrl = profileUrl || websiteUrl || 'https://www.ahmadsadiqdev.com/';
 
   const card = `
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px; background:${BRAND.white}; border-radius:16px; overflow:hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 30px rgba(0,0,0,0.04);">
@@ -248,7 +251,7 @@ export function clientConfirmationTemplate(data: TemplateData): string {
           <table role="presentation" cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td style="border-radius:10px; background:${BRAND.accent};" bgcolor="${BRAND.accent}">
-                <a href="${profileUrl}" target="_blank" style="display:inline-block; padding:13px 24px; font-family:${FONT}; font-size:14px; font-weight:600; color:${BRAND.white}; text-decoration:none; border-radius:10px;">View Portfolio</a>
+                <a href="${targetPortfolioUrl}" target="_blank" style="display:inline-block; padding:13px 24px; font-family:${FONT}; font-size:14px; font-weight:600; color:${BRAND.white}; text-decoration:none; border-radius:10px;">View Portfolio</a>
               </td>
               <td style="width:10px;"></td>
               <td style="border-radius:10px; border:1px solid ${BRAND.border};">
@@ -260,7 +263,7 @@ export function clientConfirmationTemplate(data: TemplateData): string {
       </tr>
 
       <!-- Footer -->
-      ${footerSection()}
+      ${footerSection(targetPortfolioUrl)}
     </table>
   `;
 
