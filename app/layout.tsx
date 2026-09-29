@@ -22,7 +22,9 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "500", "700"],
 });
 
-const SITE_URL = "https://www.ahmadsadiqdev.com";
+import { getSiteUrl } from "@/app/lib/site";
+
+const SITE_URL = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

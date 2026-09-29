@@ -2,6 +2,8 @@
 // Email Templates — Professional HTML email templates for the contact form
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { getSiteUrl } from './site';
+
 export interface TemplateData {
   safeName: string;
   safeEmail: string;
@@ -13,6 +15,7 @@ export interface TemplateData {
   replyEmail: string;
   submittedAt: string; // formatted date string
 }
+
 
 // ── Shared Constants ─────────────────────────────────────────────────────────
 
@@ -116,7 +119,8 @@ function summaryCard(title: string, rows: string): string {
   `;
 }
 
-function footerSection(websiteUrl = 'https://www.ahmadsadiqdev.com'): string {
+function footerSection(websiteUrl?: string): string {
+  const url = websiteUrl || getSiteUrl();
   return `
     <tr><td style="padding: 0 32px;"><div style="height:1px; background:${BRAND.border}; margin:0;"></div></td></tr>
     <tr>
@@ -124,11 +128,11 @@ function footerSection(websiteUrl = 'https://www.ahmadsadiqdev.com'): string {
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
           <tr>
             <td style="vertical-align: middle;">
-              <a href="${websiteUrl}" target="_blank" style="text-decoration:none;">${logoMark()}</a>
+              <a href="${url}" target="_blank" style="text-decoration:none;">${logoMark()}</a>
             </td>
             <td style="vertical-align: middle; text-align: right; font-family: ${FONT};">
               <p style="margin:0; font-size:13px; font-weight:600; color:${BRAND.dark};">
-                <a href="${websiteUrl}" target="_blank" style="color:${BRAND.dark}; text-decoration:none;">${BRAND.name}</a>
+                <a href="${url}" target="_blank" style="color:${BRAND.dark}; text-decoration:none;">${BRAND.name}</a>
               </p>
               <p style="margin:2px 0 0 0; font-size:12px; color:${BRAND.muted};">${BRAND.title}</p>
             </td>
@@ -339,7 +343,7 @@ export function adminNotificationTemplate(data: TemplateData): string {
       </tr>
 
       <!-- Footer -->
-      ${footerSection()}
+      ${footerSection(data.websiteUrl)}
     </table>
   `;
 

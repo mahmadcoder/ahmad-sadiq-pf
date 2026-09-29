@@ -14,7 +14,7 @@ function escapeHtml(value: string): string {
     .replace(/'/g, '&#039;');
 }
 
-const PRODUCTION_SITE_URL = 'https://www.ahmadsadiqdev.com';
+import { getSiteUrl } from '@/app/lib/site';
 
 function normalizeOrigin(request: Request): string {
   // If explicitly defined via environment variable
@@ -25,14 +25,16 @@ function normalizeOrigin(request: Request): string {
       : `https://${customUrl}`;
   }
 
-  const requestOrigin = new URL(request.url).origin;
-  // Preserve localhost in development
-  if (requestOrigin.includes('localhost') || requestOrigin.includes('127.0.0.1')) {
-    return requestOrigin;
-  }
+  // Use the origin of the current request (automatically matches ahmad-sadiq-pf.vercel.app or custom domain)
+  try {
+    const requestOrigin = new URL(request.url).origin;
+    if (requestOrigin && !requestOrigin.includes('localhost') && !requestOrigin.includes('127.0.0.1')) {
+      return requestOrigin;
+    }
+  } catch {}
 
-  // Always use the official production custom domain
-  return PRODUCTION_SITE_URL;
+  // Fallback to configured active site URL
+  return getSiteUrl();
 }
 
 

@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/app/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = getSiteUrl();
+
   return [
     {
-      url: "https://www.ahmadsadiqdev.com",
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
   ];
 }
+
